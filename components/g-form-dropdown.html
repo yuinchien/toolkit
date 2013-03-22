@@ -1,0 +1,85 @@
+<!--
+Copyright 2012 The Toolkitchen Authors. All rights reserved.
+Use of this source code is governed by a BSD-style
+license that can be found in the LICENSE file.
+-->
+<element name="g-form-dropdown" attributes="src selected opened label">
+  <link rel="stylesheet" href="css/g-menu-button.css" />
+  <link rel="components" href="g-icon.html"/>
+  <link rel="components" href="g-overlay.html">
+  <link rel="components" href="g-menu.html"/>
+  <template>
+		<style>
+      @host {
+        display: inline-block;
+				width: 240px;
+      }
+			#inputField { 
+				width: 240px;
+				height: 48px;
+				border: 1px solid rgba(0, 0, 0, 0.15);
+				padding: 12px 15px;
+				position: relative;
+				display: block;
+				display: block;
+				box-sizing: border-box;
+				z-index: 10000;
+				background: white;
+				cursor: pointer;
+			}
+			#inputField > * {
+				vertical-align: middle;
+				display: inline-block;
+			}
+			
+			#inputField[active=true] {
+				box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 6px;
+			}
+			#inputField g-icon {
+				position: absolute;
+				right: 24px;
+				top: 50%;
+				margin: -12px;
+			}
+			@host #overlay {
+				width: 240px;
+			}
+			@host g-menu {
+				width: 100%;
+			}
+			
+			@host #overlay > .overlay {
+				-webkit-transform: translateX(0) !important;
+				margin: -3px 0 0 0 !important;
+				box-sizing: border-box;
+				box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 6px !important;
+			}
+		</style>
+    <div id="inputField" touch-action="none" on-tap="toggle" src="{{src}}" on-activate="toggle" active="{{opened}}" >
+			<div class="label">
+	      <span>{{ selected }}</span>
+	    </div>
+			<g-icon id="button" touch-action="none" src="images/ic_arrow_triangledown.svg" active="{{opened}}"></g-icon></div>
+	    <g-overlay id="overlay" class="slideup" opened="{{opened}}" modal>
+	      <g-menu id="menu" selected="{{selected}}" on-activate="toggle" active="{{selected}}">
+	        <content select="*"></content>
+	      </g-menu>
+	    </g-overlay>
+  </template>
+  <script>
+    this.component({
+      opened: false,
+      publish: {
+        //* Toggle the opened state of the dropdown.
+        toggle: function() {
+          this.opened = !this.opened;
+        	// console.log( this.election() );
+				},
+        //* Returns the selected item.
+        get selection() {
+          return this.$.menu.selection;
+        }
+      }
+    });
+  </script>
+</element>

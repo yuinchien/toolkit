@@ -1,0 +1,49 @@
+<!--
+Copyright 2012 The Toolkitchen Authors. All rights reserved.
+Use of this source code is governed by a BSD-style
+license that can be found in the LICENSE file.
+-->
+<element name="g-form-menu-item" attributes="src label iconsize">
+  <link rel="components" href="g-icon.html">
+  <template>
+    <style>
+      @host {
+        display: block;
+        box-sizing: border-box;
+        padding: 12px 14px;
+        cursor: pointer;
+				height: 48px;
+        -webkit-user-select: none;
+				border-top: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      @host.selected {
+        background: rgba(0,0,0,0.05);
+      }
+      @host:hover {
+        background: rgba(0,0,0,0.025);
+      }
+
+      .label {
+				opacity: .5;
+      }
+			@host.selected .label {
+				opacity: .8;
+      }
+      g-icon, .label, .label > * {
+        display: inline-block;
+        vertical-align: middle;
+      }
+    </style>
+    <!-- <g-icon src="{{src}}" size="{{iconsize}}"></g-icon> -->
+    <div class="label">
+      <span>{{label}}</span>
+      <content></content>
+    </div>
+  </template>
+  <script>
+    this.component({
+      label: ''
+    });
+  </script>
+</element>
