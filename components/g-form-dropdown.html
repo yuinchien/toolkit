@@ -55,13 +55,13 @@ license that can be found in the LICENSE file.
 				box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 6px !important;
 			}
 		</style>
-    <div id="inputField" touch-action="none" on-tap="toggle" src="{{src}}" on-activate="toggle" active="{{opened}}" >
+    <div id="inputField" touch-action="none" on-tap="toggle" src="{{src}}" >
 			<div class="label">
 	      <span>{{ selected }}</span>
 	    </div>
-			<g-icon id="button" touch-action="none" src="images/ic_arrow_triangledown.svg" active="{{opened}}"></g-icon></div>
+			<g-icon id="button" touch-action="none" src="images/ic_arrow_triangledown.svg"></g-icon></div>
 	    <g-overlay id="overlay" class="slideup" opened="{{opened}}" modal>
-	      <g-menu id="menu" selected="{{selected}}" on-activate="toggle" active="{{selected}}">
+	      <g-menu id="menu" selected="{{selected}}" on-activate="toggle" >
 	        <content select="*"></content>
 	      </g-menu>
 	    </g-overlay>
